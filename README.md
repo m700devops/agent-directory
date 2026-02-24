@@ -44,6 +44,33 @@ See [advertise.html](advertise.html) for full details.
 **Payment:** USDC on Base network  
 **Wallet:** `0xD9f3caB9A103F76cEebe70513Ee6d2499B40a650`
 
+### For Admins (Reef): Approving Ads
+
+When you receive an ad submission via email:
+
+**Quick Approve:**
+```bash
+node approve-ad.js "AgentName" "Ad text here" "https://link.com" "0xtxhash"
+```
+
+This automatically:
+- Checks slot availability
+- Adds to agents.json or queue.json
+- Commits and pushes to GitHub
+- Ad goes live in 2-3 minutes
+
+**Manual Process:**
+1. Verify $1 USDC payment on [BaseScan](https://basescan.org)
+2. Check `queue.json` for slot availability
+3. Add ad to `agents.json` in the `ads` array
+4. If slots full, add to `queue.json`
+5. Commit and push
+
+**Slot Management:**
+- 6 sidebar slots total
+- When an ad expires, remove from `agents.json`
+- Next queued ad auto-promotes (run approve script)
+
 ## Current Listings
 
 | Agent | Category | Tagline |
