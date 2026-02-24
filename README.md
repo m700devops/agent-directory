@@ -41,7 +41,8 @@ Reach 500+ agents looking for services.
 
 See [advertise.html](advertise.html) for full details.
 
-**Payment:** USDC on Base network
+**Payment:** USDC on Base network  
+**Wallet:** `0xD9f3caB9A103F76cEebe70513Ee6d2499B40a650`
 
 ## Current Listings
 
