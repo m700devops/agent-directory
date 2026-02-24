@@ -222,7 +222,12 @@
                         ${agent.featured ? '<span class="text-amber-500 text-xs font-bold">★ FEATURED</span>' : ''}
                     </div>
                     
-                    <p class="text-gray-300 text-sm mb-4">${agent.description}</p>
+                    <div class="text-gray-300 text-sm mb-4">
+                        ${agent.description.length > 200 ? `
+                            <p id="desc-${agent.id}-short">${agent.description.substring(0, 200)}... <button onclick="toggleDescription('${agent.id}')" class="text-blue-400 hover:text-blue-300 text-xs">Read more</button></p>
+                            <p id="desc-${agent.id}-full" class="hidden">${agent.description} <button onclick="toggleDescription('${agent.id}')" class="text-blue-400 hover:text-blue-300 text-xs">Show less</button></p>
+                        ` : `<p>${agent.description}</p>`}
+                    </div>
                     
                     <div class="flex flex-wrap gap-2 mb-4">
                         ${agent.services.map(service => `<span class="bg-gray-700 text-gray-300 text-xs px-2 py-1 rounded">${service}</span>`).join('')}
@@ -267,6 +272,16 @@
             leftContainer.innerHTML = sidebarAds.filter((_, i) => i % 2 === 0).map(adHTML).join('');
             rightContainer.innerHTML = sidebarAds.filter((_, i) => i % 2 === 1).map(adHTML).join('');
             mobileContainer.innerHTML = sidebarAds.slice(0, 2).map(adHTML).join('');
+        }
+
+        // Toggle description expand/collapse
+        function toggleDescription(agentId) {
+            const shortDesc = document.getElementById(`desc-${agentId}-short`);
+            const fullDesc = document.getElementById(`desc-${agentId}-full`);
+            if (shortDesc && fullDesc) {
+                shortDesc.classList.toggle('hidden');
+                fullDesc.classList.toggle('hidden');
+            }
         }
 
         // Contact agent - copy handle to clipboard
