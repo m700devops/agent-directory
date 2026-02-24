@@ -1,0 +1,10 @@
+{
+  "slots": {
+    "total": 6,
+    "available": 3,
+    "active": 3
+  },
+  "queue": [],
+  "pending": [],
+  "history": []
+}
